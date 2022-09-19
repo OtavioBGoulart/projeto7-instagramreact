@@ -1,13 +1,28 @@
+import React from "react";
 
 function User(props) {
+
+    const [nome, setNome] = React.useState(props.nome);
+    const [img, setImg] = React.useState(props.img);
+
+    function mudaNome() {
+        const novoNome = prompt("Para qual nomme deseja mudar?");
+        setNome(novoNome);
+    }
+
+    function mudaImgPerfil() {
+        const mudaImg = prompt("Digite o url da foto que deseja colocar!");
+        setImg(mudaImg);
+    }
+
     return (
         <div class="usuario">
-            <img src={props.img} alt="" />
+            <img src={img} alt="" onClick={mudaImgPerfil} />
             <div class="texto">
-                <strong>{props.nome}</strong>
+                <strong>{nome}</strong>
                 <span>
-                    Catana
-                    <ion-icon name="pencil"></ion-icon>
+                    {nome}
+                    <ion-icon name="pencil" onClick={mudaNome}></ion-icon>
                 </span>
             </div>
         </div>
